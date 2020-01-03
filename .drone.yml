@@ -1,0 +1,25 @@
+kind: pipeline
+type: kubernetes
+name: default
+
+platform:
+  os: linux
+  arch: arm64
+
+metadata:
+  namespace: default
+
+steps:
+- name: frontend
+  image: node
+  commands:
+  - npm install
+  - npm test
+  - npm start
+
+trigger:
+  branch:
+    include:
+    - master
+    - develop
+    - feature/*
