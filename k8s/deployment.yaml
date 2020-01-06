@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-test
+  labels:
+    app: deploy-test
+    env: fe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy-test
+  template:
+    metadata:
+      labels:
+        app: deploy-test
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: deploy-test
+          image: eugene261997/deploy-test:latest
+          ports:
+            - containerPort: 80
