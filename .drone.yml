@@ -12,21 +12,17 @@ metadata:
 steps:
 - name: tester
   image: node  
-  volumes:
-    - name: cache
-      path: /.
   commands:
   - npm install
   - npm test
 - name: docker
   image: docker:latest
   volumes:
-    - name: cache
-      path: /.
     - name: docker_sock
       path: /var/run/docker.sock
   commands:
   - ls
+  - dockerd
   - docker build -t tpleugenerebong/deploy-test:develop .
   - docker push tpleugenerebong/deploy-test:develop
 
