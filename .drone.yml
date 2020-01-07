@@ -18,8 +18,7 @@ steps:
   - docker build -t tpleugenerebong/deploy-test:develop
   when:
     branch:
-      include:
-        - feature/*
+      - feature/*
 steps:
 - name: frontend
   image: node
@@ -29,8 +28,7 @@ steps:
   - docker build -t tpleugenerebong/deploy-test:master
   when:
     branch:
-      include:
-        - master
+      - master
 
 trigger:
   branch:
