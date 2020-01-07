@@ -20,6 +20,17 @@ steps:
     branch:
       include:
         - feature/*
+steps:
+- name: frontend
+  image: node
+  commands:
+  - npm install
+  - npm test
+  - docker build -t tpleugenerebong/deploy-test:master
+  when:
+    branch:
+      include:
+        - master
 
 trigger:
   branch:
