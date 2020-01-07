@@ -22,7 +22,8 @@ steps:
       from_secret: docker_user
     password: 
       from_secret: docker_pass
-    repo: registry.hub.docker.com/tpleugenerebong/deploy-test
+    repo: docker.io/tpleugenerebong/deploy-test
+    tags: latest
   # commands:
   # - docker build -t tpleugenerebong/deploy-test:develop .
   # - docker push tpleugenerebong/deploy-test:develop
