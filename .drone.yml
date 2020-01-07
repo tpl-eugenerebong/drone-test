@@ -10,16 +10,19 @@ metadata:
   namespace: default
 
 steps:
-- name: tester
-  image: node  
-  commands:
-  - npm install
-  - npm test
+# - name: tester
+#   image: node  
+#   commands:
+#   - npm install
+#   - npm test
 - name: docker
   image: plugins/docker
-  commands:
-  - docker build -t tpleugenerebong/deploy-test:develop .
-  - docker push tpleugenerebong/deploy-test:develop
+  settings:
+    repo: tpleugenerebong/deploy-test
+    tags: latest
+  # commands:
+  # - docker build -t tpleugenerebong/deploy-test:develop .
+  # - docker push tpleugenerebong/deploy-test:develop
 
 trigger:
   branch:
