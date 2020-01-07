@@ -10,27 +10,22 @@ metadata:
   namespace: default
 
 steps:
-- name: frontend
-  image: node
+- name: tester
+  image: node  
+  volumes:
+    - name: cache
+      path: /.
   commands:
   - npm install
   - npm test
+- name: docker
+  image: docker  
+  volumes:
+    - name: cache
+      path: /.
+  commands:
   - docker build -t tpleugenerebong/deploy-test:develop
-  when:
-    branch:
-      - feature/*
-steps:
-- name: frontend
-  image: node
-  commands:
-  - npm install
-  - npm test
-  - docker build -t tpleugenerebong/deploy-test:master
-  when:
-    branch:
-      - master
-
-
+  
 trigger:
   branch:
     include:
