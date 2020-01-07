@@ -23,6 +23,9 @@ steps:
   volumes:
     - name: cache
       path: /.
+    volumes:
+      - name: docker_sock
+        path: /var/run/docker.sock
   commands:
   - ls
   - docker build -t tpleugenerebong/deploy-test:develop .
