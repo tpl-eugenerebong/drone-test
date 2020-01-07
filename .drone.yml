@@ -25,7 +25,7 @@ steps:
     repo: docker.io/tpleugenerebong/deploy-test
     tags: latest
   commands:
-    - cat ~/.docker/config.json
+    - docker login
   # - docker build -t tpleugenerebong/deploy-test:develop .
   # - docker push tpleugenerebong/deploy-test:develop
 
