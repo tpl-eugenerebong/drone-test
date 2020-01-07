@@ -18,6 +18,10 @@ steps:
 - name: docker
   image: plugins/docker
   settings:
+    username: 
+      from_secret: docker_user
+    password: 
+      from_secret: docker_pass
     repo: tpleugenerebong/deploy-test
     tags: latest
   # commands:
