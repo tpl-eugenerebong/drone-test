@@ -25,18 +25,8 @@ steps:
 #     repo: tpleugenerebong/deploy-test
 #     tags: development
 - name: Deploy the image
-  image: sinlead/drone-kubectl
-  settings:
-    kubernetes_server:
-      from_secret: k8s_server
-    kubernetes_cert:
-      from_secret: k8s_cert
-    kubernetes_token:
-      from_secret: k8s_token
-  commands:
-    - kubectl config view
-    - kubectl get pods
-    - kubectl get services
+    image: vallard/drone-kube
+    template: deployment.yaml
   
 
 trigger:
