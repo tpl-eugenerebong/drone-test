@@ -25,9 +25,16 @@ steps:
 #     repo: tpleugenerebong/deploy-test
 #     tags: development
 - name: Deploy the image
-  image: komljen/drone-kubectl-helm
-  secrets: [ k8s_server, k8s_cert, k8s_token ]
-  kubectl: "get nodes"
+    image: sinlead/drone-kubectl
+    settings:
+      kubernetes_server:
+        from_secret: k8s_server
+      kubernetes_cert:
+        from_secret: k8s_cert
+      kubernetes_token:
+        from_secret: k8s_token
+    commands:
+      - kubectl get nodes
   
 
 trigger:
