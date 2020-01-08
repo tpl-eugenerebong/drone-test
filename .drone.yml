@@ -10,20 +10,20 @@ metadata:
   namespace: default
 
 steps:
-# - name: Test the repository
-#   image: node  
-#   commands:
-#   - npm install
-#   - npm test
-# - name: Build and Push the repository
-#   image: plugins/docker
-#   settings:
-#     username: 
-#       from_secret: docker-user
-#     password: 
-#       from_secret: docker-pass
-#     repo: tpleugenerebong/deploy-test
-#     tags: development
+- name: Test the repository
+  image: node  
+  commands:
+  - npm install
+  - npm test
+- name: Build and Push the repository
+  image: plugins/docker
+  settings:
+    username: 
+      from_secret: docker-user
+    password: 
+      from_secret: docker-pass
+    repo: tpleugenerebong/deploy-test
+    tags: development
 - name: Deploy the image
   image: sinlead/drone-kubectl
   settings:
@@ -34,9 +34,8 @@ steps:
     kubernetes_token:
       from_secret: k8s_token
   commands:
-    - ls k8s/
-    # - kubectl delete -f ./k8s/deployment
-    # - kubectl create -f ./k8s/deployment
+    - kubectl delete -f ./k8s/development
+    - kubectl create -f ./k8s/development
   
 
 trigger:
