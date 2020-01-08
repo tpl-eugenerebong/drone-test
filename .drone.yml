@@ -35,6 +35,8 @@ steps:
       from_secret: k8s_token
   commands:
     - kubectl config view
+    - kubectl get pods
+    - kubectl get services
   
 
 trigger:
