@@ -22,7 +22,7 @@ steps:
       from_secret: docker-user
     password: 
       from_secret: docker-pass
-    repo: tpleugenerebong/deploy-test:development
+    repo: tpleugenerebong/deploy-test
     tags: development
 - name: Deploy the image
   image: sinlead/drone-kubectl
