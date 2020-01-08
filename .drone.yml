@@ -34,7 +34,7 @@ steps:
     kubernetes_token:
       from_secret: k8s_token
   commands:
-    - kubectl config get-contexts
+    - kubectl config view -o jsonpath='{range .clusters[*]}{.name}{"\t"}{.cluster.server}{"\n"}{end}'
   
 
 trigger:
