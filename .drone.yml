@@ -25,10 +25,9 @@ steps:
 #     repo: tpleugenerebong/deploy-test
 #     tags: development
 - name: Deploy the image
-  image: vallard/drone-kube
-  template: deployment.yaml
-  server:
-    from_secret: kube_server
+  image: komljen/drone-kubectl-helm
+  secrets: [ k8s_server, k8s_cert, k8s_token ]
+  kubectl: "get nodes"
   
 
 trigger:
