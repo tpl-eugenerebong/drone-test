@@ -27,6 +27,8 @@ steps:
 - name: Deploy the image
   image: vallard/drone-kube
   template: deployment.yaml
+  server:
+    from_secret: kube_server
   
 
 trigger:
