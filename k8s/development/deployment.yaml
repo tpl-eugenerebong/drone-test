@@ -19,6 +19,6 @@ spec:
         - name: regcred
       containers:
         - name: deploy-test
-          image: tpleugenerebong/deploy-test
+          image: tpleugenerebong/deploy-test:development
           ports:
             - containerPort: 3000

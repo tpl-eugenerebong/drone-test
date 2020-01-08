@@ -10,22 +10,32 @@ metadata:
   namespace: default
 
 steps:
-- name: Test the repository
-  image: node  
-  commands:
-  - npm install
-  - npm test
-- name: Build and Push the repository
-  image: plugins/docker
+# - name: Test the repository
+#   image: node  
+#   commands:
+#   - npm install
+#   - npm test
+# - name: Build and Push the repository
+#   image: plugins/docker
+#   settings:
+#     username: 
+#       from_secret: docker-user
+#     password: 
+#       from_secret: docker-pass
+#     repo: tpleugenerebong/deploy-test
+#     tags: development
+- name: Deploy the image
+  image: sinlead/drone-kubectl
   settings:
-    username: 
-      from_secret: docker-user
-    password: 
-      from_secret: docker-pass
-    repo: tpleugenerebong/deploy-test
-    tags: latest
-  # - docker build -t tpleugenerebong/deploy-test:develop .
-  # - docker push tpleugenerebong/deploy-test:develop
+    kubernetes_server:
+      from_secret: k8s_server
+    kubernetes_cert:
+      from_secret: k8s_cert
+    kubernetes_token:
+      from_secret: k8s_token
+  commands:
+    - kubectl config get-contexts
+  
 
 trigger:
   branch:
