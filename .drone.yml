@@ -10,11 +10,11 @@ metadata:
   namespace: default
 
 steps:
-- name: Test the repository
-  image: node  
-  commands:
-  - npm install
-  - npm test
+# - name: Test the repository
+#   image: node  
+#   commands:
+#   - npm install
+#   - npm test
 - name: Build and Push the repository
   image: plugins/docker
   settings:
