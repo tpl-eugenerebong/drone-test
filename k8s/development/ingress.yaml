@@ -8,7 +8,7 @@ spec:
   rules:
     - http:
         paths:
-          - path: /dev/deploy-test
+          - path: /deploy-test
             backend:
               serviceName: deploy-test
               servicePort: 80

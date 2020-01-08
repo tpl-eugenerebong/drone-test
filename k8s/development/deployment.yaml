@@ -21,4 +21,4 @@ spec:
         - name: deploy-test
           image: tpleugenerebong/deploy-test:development
           ports:
-            - containerPort: 3000
+            - containerPort: 80
