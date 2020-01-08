@@ -25,8 +25,8 @@ steps:
 #     repo: tpleugenerebong/deploy-test
 #     tags: development
 - name: Deploy the image
-    image: vallard/drone-kube
-    template: deployment.yaml
+  image: vallard/drone-kube
+  template: deployment.yaml
   
 
 trigger:
