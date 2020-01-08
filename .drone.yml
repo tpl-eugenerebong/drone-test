@@ -34,8 +34,8 @@ steps:
     kubernetes_token:
       from_secret: k8s_token
   commands:
-    - kubectl delete -f k8s/deployment
-    - kubectl create -f k8s/deployment
+    - kubectl delete -f ./k8s/deployment
+    - kubectl create -f ./k8s/deployment
   
 
 trigger:
