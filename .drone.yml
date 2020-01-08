@@ -34,7 +34,10 @@ steps:
     kubernetes_token:
       from_secret: k8s_token
   commands:
-    - kubectl config get-context
+    - kubectl config current-context
+    - kubectl get pods
+    - kubectl get services
+    - kubectl get deployments
   
 
 trigger:
