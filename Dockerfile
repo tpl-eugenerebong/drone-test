@@ -1,18 +1,17 @@
-# base image
-FROM node:12.2.0-alpine
+FROM node:12 as build
 
-# set working directory
-WORKDIR /app
+WORKDIR /usr/src/app
 
-# add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
+COPY package*.json ./
 
-# install and cache app dependencies
-COPY package.json /app/package.json
+RUN npm install --production
 
-copy . /app/
+COPY . ./
+RUN npm run build
 
-RUN npm install --silent
+FROM nginx:1.17-alpine
+COPY --from=build /usr/src/app/build /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/
 
-# start app
-CMD ["npm", "start"]
+EXPOSE 80
+CMD ["nginx","-g","daemon off;"]
