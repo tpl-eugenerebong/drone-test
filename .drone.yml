@@ -34,7 +34,7 @@ steps:
     kubernetes_token:
       from_secret: k8s_token
   commands:
-    - kubectl get nodes
+    - kubectl config get-context
   
 
 trigger:
