@@ -15,6 +15,7 @@ steps:
 #   commands:
 #   - npm install
 #   - npm test
+
 - name: Build and Push the repository
   image: plugins/docker
   settings:
