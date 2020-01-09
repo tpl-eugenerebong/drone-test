@@ -38,7 +38,6 @@ steps:
     - kubectl delete -f ./k8s/development
     - kubectl create -f ./k8s/development
   
-
 trigger:
   branch:
     include:
