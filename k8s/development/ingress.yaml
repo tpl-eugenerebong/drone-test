@@ -2,13 +2,14 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: deploy-test-ingress
+  namespace: deploy-test
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /deploy-test
             backend:
               serviceName: deploy-test
               servicePort: 3000
